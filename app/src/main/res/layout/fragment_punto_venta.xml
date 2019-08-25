@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.informaciones.PuntoVentaFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15px"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px">
+
+        <Spinner
+            android:id="@+id/id_combo_municipios_ptos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/localizacion" />
+
+        <ListView
+            android:id="@+id/id_lista_puntoventa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="55dp">
+
+        </ListView>
+    </LinearLayout>
+
+</FrameLayout>

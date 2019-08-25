@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <!--<item
+            android:id="@+id/id_menu_agregar_cliente"
+            android:icon="@drawable/ic_people_24dp"
+            android:title="@string/menu_agregar_cliente" />-->
+        <item
+            android:id="@+id/id_menu_gestionar_compra"
+            android:icon="@drawable/ic_monetization_24dp"
+            android:title="@string/menu_gestionar_compra" />
+    </group>
+
+    <item android:title="Opciones">
+        <menu>
+            <item
+                android:id="@+id/id_menu_informaciones"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="@string/informaciones" />
+            <item
+                android:id="@+id/id_menu_tramites"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="@string/tramites" />
+            <item
+                android:id="@+id/id_menu_servicioes"
+                android:icon="@drawable/ic_view_list_black_24dp"
+                android:title="@string/servicios" />
+            <item
+                android:id="@+id/id_menu_localizacion"
+                android:icon="@drawable/ic_location_on_black_24dp"
+                android:title="@string/localizacion" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_ajustes">
+        <menu>
+            <item
+                android:id="@+id/id_menu_provincia"
+                android:icon="@drawable/ic_add_location_black_24dp"
+                android:title="@string/cambiar_provincia"/>
+            <!--<item
+                android:id="@+id/id_menu_configuracion"
+                android:icon="@drawable/ic_settings_24dp"
+                android:title="@string/menu_configuracion" />-->
+            <item
+                android:id="@+id/id_menu_ayuda"
+                android:icon="@drawable/ic_help_24dp"
+                android:title="@string/menu_ayuda" />
+            <item
+                android:id="@+id/id_menu_salir"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/menu_salir" />
+        </menu>
+    </item>
+</menu>

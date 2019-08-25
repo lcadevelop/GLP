@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/id_navigation_servicio_1"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/atencion_cliente_titulo" />
+
+    <item
+        android:id="@+id/id_navigation_servicio_2"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/servicios_mecanicos_titulo" />
+</menu>

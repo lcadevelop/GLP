@@ -1,0 +1,264 @@
+<resources>
+    <string name="app_name">GLP</string>
+
+    <string name="nombre_portada">GLP</string>
+    <string name="title_activity_principal">GLP</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="action_settings">Configuración</string>
+
+    //MENU LATERAL
+    <string name="menu_titulo_foto_desc">Imagen del Cliente</string>
+    <string name="menu_titulo">Invitado</string>
+    <string name="menu_subtitulo">Número de Contrato</string>
+    <string name="menu_agregar_cliente">Agregar Cliente</string>
+    <string name="menu_gestionar_compra">Gestionar Compra</string>
+    <string name="menu_ajustes">Ajustes</string>
+    <string name="cambiar_provincia">Cambiar Provincia</string>
+    <string name="menu_configuracion">Configuración</string>
+    <string name="menu_ayuda">Ayuda</string>
+    <string name="menu_acerca">Créditos</string>
+    <string name="menu_salir">Salir</string>
+
+    //TRAMITES
+    <string name="tramites">Trámites</string>
+    <string name="title_activity_tramites">Trámites Disponibles</string>
+    <string name="cambio_titular_titulo">Titular</string>
+    <string name="cambio_titular_descripcion">Requisitos para Cambio de Titular</string>
+    <string name="altas_bajas_titulo">Altas o Bajas</string>
+    <string name="altas_bajas_descripcion">Requisitos para dar Alta o Baja a un integrante del núcleo</string>
+    <string name="gestionar_contrato_titulo">Contratos</string>
+    <string name="gestionar_contrado_descripcion">Requisitos para realizar la gestión de un contrato</string>
+
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    //SERVICIOS
+    <string name="servicios">Servicios</string>
+    <string name="title_activity_servicios">Servicios Disponibles</string>
+    <string name="atencion_cliente_titulo">Atención a Clientes</string>
+    <string name="servicios_mecanicos_titulo">Servicios Mecánicos</string>
+    <string name="reportar_averia_titulo">Reportar Avería</string>
+    <string name="reportar_averia_descripcion">Pasos necesarios para Reportar una Avería</string>
+    <string name="cambio_piezas_titulo">Cambio de Piezas</string>
+    <string name="cambio_piezas_descripcion">Información relacionada al cambio de Piezas</string>
+    <string name="servicio_3_titulo">Servicio 3</string>
+    <string name="servicio_3_descripcion">Descripción del Servicio 3</string>
+
+    //INFORMACIONES
+    <string name="informaciones">Informaciones</string>
+    <string name="title_activity_informaciones">Informaciones Útiles</string>
+    <string name="empresa_comercializadora">Comercializadora</string>
+    <string name="casas_comerciales">Casas Comerciales</string>
+    <string name="informacion_1_descripcion">Descripción de la Información 1</string>
+    <string name="puntos_venta">Puntos de Venta</string>
+    <string name="informacion_2_descripcion">Descripción de la Información 2</string>
+    <string name="informacion_3_titulo">Información 3</string>
+    <string name="informacion_3_descripcion">Descripción de la Información 3</string>
+
+    //LOCALIZACION
+    <string name="localizacion">Mapa</string>
+    <string name="title_activity_mapa">Localización Geográfica</string>
+
+    //COMPRAS
+    <string name="title_activity_compra">Gestionar Compras</string>
+
+    //CONFIGURACION
+    <string name="title_activity_configuracion">Configuración</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+
+    <!-- Strings related to login -->
+    <string name="title_activity_nuevo_cliente">Registrar Cliente</string>
+    <string name="texto_titular">Titular del Contrato</string>
+    <string name="texto_tipo_contrato">Tipo de Contrato</string>
+    <string name="texto_numero_contrato">Número de Contrato</string>
+    <string name="texto_cantidad_consumidores">Cantidad de Consumidores</string>
+    <string name="action_sign_in">Registrar Cliente</string>
+    <string name="action_sign_in_short">Registrar Cliente</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="title_activity_ayuda">Ayuda</string>
+    <string name="title_home">Home</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="texto_titular_completo">Cambio de Nombre del Titular, por los siguientes motivos:\n
+        A) Permuta\n
+        B) Adjudicación de la Vivienda\n
+        C) Donación\n
+        D) Compraventa\n
+        E) Fallecimiento\n
+\n
+Para realizar este Trámite, debe presentar:\n
+        A) La propiedad del Título de la Vivienda.\n
+        B) Una fotocopia de la misma.\n
+        C) La Libreta de Consumo.\n
+        D) El Carnet de Identidad con la dirección Actualizada.\n
+        E) El Contrato del Gas Licuado. \n
+\n
+En caso de trasladarse de otra provincia además, deben presentar el Modelo de traslado que lo acredite, que es cliente de gas Licuado.\n
+\n
+En caso de las Nuevas viviendas y en las Compraventas, si el nuevo titular no tiene Contrato de gas Licuado,   y desea ser Cliente De gas Licuado a partir de este momento entonces deberá abonar la Cuantía de 400.00 pesos por el alquiler del Cilindro  en la Casa Comercial y la suma de 110.00 pesos cuando Adquiera el Cilindro Lleno en los Puntos de Venta, para estos clientes no existe límite de ciclo para  adquisición del gas.\n
+\n
+En caso de adjudicación por fallecimiento debe presentar el Certificado de defunción.\n
+\n
+En caso de adjudicación por salida del país debe presentar el Certificado de la Oficina de Inmigración.\n
+\n
+Cuando se haga adjudicación por Donación del contrato del gas, Debe presentarse con el Titular anterior y una carta de Donación del Contrato de gas licuado y Firmado por ambas persona.\n</string>
+
+    <string name="texto_altasbajas_completo">Altas y Bajas de la Cantidad de Persona en el Núcleo \n
+\n
+Para realizar este Trámite, Debe presentar: \n
+        A) La Libreta de Consumo. \n
+        B) El Carnet de Identidad con la dirección Actualizada. \n
+        C) El Contrato del Gas Licuado. \n
+</string>
+
+    <string name="texto_contrato_completo">Traslado del Contrato de Gas Licuado. \n
+\n
+Para realizar este Trámite, Debe presentar: \n
+        A) La baja de la Oficiada y el Cierre de la  Libreta de Consumo. \n
+        B) El Carnet de Identidad con la dirección Actualizada para donde se va a trasladar. \n
+        C) El  Contrato del Gas Licuado. \n
+        D) Los cilindros de gas Licuado que tengan en su poder. \n
+\n
+Actualizar  y Renovar los Contratos que sean Núcleos Divididos. \n
+\n
+Para realizar este Trámite, Debe presentar: \n
+        A) La Libreta de Consumo. \n
+        B) El Carnet de Identidad con la dirección Actualizada. \n
+        C) El Contrato del Gas Licuado. \n
+Nota: Debe presentarse en la casa Comercial todos los años o cada 12 meses. \n
+Siempre debe presentarse el Titular del Núcleo Dividido. \n
+Al Núcleo Dividido no se le dará alta en la composición de núcleos, a personas mayores solamente y a los Recién nacidos. \n
+\n
+Atualizar y Renovar los Contratos Reservas. \n
+\n
+Nota: Para estos Clientes que estén en la Condición de Postrados el ciclo será cada  3 meses. \n
+\n
+Para realizar este Trámite: \n
+        A) Se debe  verificar si ya llego la autorización de salud pública. \n
+        B) La Libreta de Consumo. \n
+        C) El Carnet de Identidad con la dirección Actualizada del Postrado. \n
+        D) El Contrato del Gas Licuado. \n
+\n
+Nota: Debe presentarse en la casa Comercial todos los años o cada 12 meses. \n
+Siempre debe presentarse el Titular  Contrato. \n
+Una vez fallecido el enfermo ,  el Contrato pasara al ciclo establecido para los Clientes de Reserva que es cada 6 meses o 2 veces al año. \n
+</string>
+
+    <string name="texto_contrato_averia">Número de teléfono para realizar los reportes: \n
+\n
+  Casa Comercial Gerona: ------- 46 32 2651 \n
+  Casa Comercial la Fe: -------  46 39 4593 \n
+  Puesto De mando: ------  46 32 5223 ( fin de semana) \n
+</string>
+    <string name="texto_contrato_piezas">Los precios de cada Servicio A clientes NORMADOS, serán: \n
+\n
+        Cambio de Regulador: ----- $ 10.70 \n
+        Cambio de manguera: ----- $ 1.45 \n
+        cambio de presilla: ---- $ 0.50 \n
+\n
+Según  el  servicio Recibido pagara  además ,  6.15 por mano de obra \n
+\n
+\n
+Los precios de cada Servicio A clientes LIBERADOS serán: \n
+\n
+        Cambio de Regulador: ----- $ 51.90 \n
+        Cambio de manguera: ----- $ 6.90 \n
+        Cambio de presilla: ---- 5.40 \n
+\n
+Y no se le cobrara la mano de obra. \n
+</string>
+    <string name="title_activity_info_tab">InfoTabActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+</resources>

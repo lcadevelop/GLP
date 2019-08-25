@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".activities.PortadaActivity">
+
+    <ImageView
+        android:id="@+id/idimagenportada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/nombre_portada"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@mipmap/ic_cupet" />
+
+    <TextView
+        android:id="@+id/id_texto_portada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idimagenportada"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:text="@string/nombre_portada"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/id_texto_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_texto_portada"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="0dp"
+        android:text=""
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+</RelativeLayout>
