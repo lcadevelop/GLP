@@ -128,7 +128,7 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
 
         for (int i = 0; i < listaclientes.size(); i++)
         {
-            if (listaclientes.get(i).getActivo() == true)
+            if (listaclientes.get(i).getActivo())
             {
                 clientetemporal = listaclientes.get(i);
                 listaclientes.remove(clientetemporal);
@@ -254,7 +254,7 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
             Cliente clienteactivo = new Cliente();
             for (int i = 0; i < clienteList.size(); i++)
             {
-                if (clienteList.get(i).getActivo() == true)
+                if (clienteList.get(i).getActivo())
                 {
                     clienteactivo = clienteList.get(i);
                 }
