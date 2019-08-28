@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,61 +52,14 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-        Button boton_tramite = (Button)findViewById(R.id.id_boton_tramites);
-        Button boton_servicios = (Button)findViewById(R.id.id_boton_servicio);
-        Button bot0n_informaciones = (Button)findViewById(R.id.id_boton_informaciones);
-        Button boton_localizacion = (Button)findViewById(R.id.id_boton_localizacion);
+        ImageView principal_tramites = findViewById(R.id.id_principal_tramites);
+        ImageView principal_servicios = findViewById(R.id.id_principal_servicios);
+        ImageView principal_informaciones = findViewById(R.id.id_principal_informaciones);
+        ImageView principal_mapa = findViewById(R.id.id_principal_localizacion);
 
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
         Database database = helper.getWritableDb();
         final DaoSession daoSession = new DaoMaster(database).newSession();
-
-        boton_tramite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(PrincipalActivity.this, TramitesActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        boton_servicios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(PrincipalActivity.this, ServiciosActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        bot0n_informaciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(PrincipalActivity.this, InformacionesActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        boton_localizacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(PrincipalActivity.this, MapaActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Agregue un Cliente para Registrar una Compra", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -189,6 +143,42 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         navigationView.setNavigationItemSelectedListener(this);
 
         provincias = daoSession.getProvinciaDao().loadAll();
+
+        principal_tramites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(PrincipalActivity.this, TramitesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        principal_servicios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(PrincipalActivity.this, ServiciosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        principal_informaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(PrincipalActivity.this, InformacionesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        principal_mapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(PrincipalActivity.this, MapaActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

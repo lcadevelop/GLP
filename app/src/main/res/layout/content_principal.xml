@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,50 +10,95 @@
     tools:showIn="@layout/app_bar_principal"
     android:fitsSystemWindows="true">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight=".50">
-            <Button
-                android:id="@+id/id_boton_tramites"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:backgroundTint="#FFFFFF"
-                android:text="Trámites" />
+    <ImageView
+        android:id="@+id/id_principal_tramites"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/ic_principal_tramites_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/id_principal_servicios"
+        app:layout_constraintEnd_toStartOf="@+id/id_principal_servicios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/id_boton_servicio"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:backgroundTint="@color/ic_cupet_background"
-                android:text="Servicios"/>
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight=".50">
+    <TextView
+        android:id="@+id/id_principal_tramites_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tramites"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/id_principal_tramites"
+        app:layout_constraintStart_toStartOf="@+id/id_principal_tramites"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_tramites" />
 
-            <Button
-                android:id="@+id/id_boton_informaciones"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:backgroundTint="@color/ic_cupet_background"
-                android:text="Informaciones"
-                />
+    <ImageView
+        android:id="@+id/id_principal_servicios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@mipmap/ic_principal_servicios_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/id_principal_informaciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_principal_tramites"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_tramites" />
 
-            <Button
-                android:id="@+id/id_boton_localizacion"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:backgroundTint="@color/ic_cupet_background"
-                android:text="Localización"/>
-        </TableRow>
-    </TableLayout>
-</RelativeLayout>
+    <TextView
+        android:id="@+id/id_principal_servicios_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_servicios"
+        app:layout_constraintStart_toStartOf="@+id/id_principal_servicios"
+        app:layout_constraintEnd_toEndOf="@+id/id_principal_servicios"
+        android:text="@string/servicios"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+    <ImageView
+        android:id="@+id/id_principal_informaciones"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@mipmap/ic_principal_informaciones_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/id_principal_localizacion"
+        app:layout_constraintEnd_toStartOf="@+id/id_principal_servicios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_servicios" />
+
+    <TextView
+        android:id="@+id/id_principal_informaciones_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_informaciones"
+        app:layout_constraintStart_toStartOf="@+id/id_principal_informaciones"
+        app:layout_constraintEnd_toEndOf="@+id/id_principal_informaciones"
+        android:text="@string/informaciones"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+    <ImageView
+        android:id="@+id/id_principal_localizacion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@mipmap/ic_principal_localizacion_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/id_principal_localizacion_texto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_principal_informaciones"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_informaciones" />
+
+    <TextView
+        android:id="@+id/id_principal_localizacion_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_localizacion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/id_principal_localizacion"
+        app:layout_constraintEnd_toEndOf="@+id/id_principal_localizacion"
+        android:layout_marginBottom="16dp"
+        android:text="@string/localizacion"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

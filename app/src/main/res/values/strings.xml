@@ -2,6 +2,8 @@
     <string name="app_name">GLP</string>
 
     <string name="nombre_portada">GLP</string>
+    <string name="cupet_portada">CUPET</string>
+    <string name="union_portada">Unión Cuba-Petróleo</string>
     <string name="title_activity_principal">GLP</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

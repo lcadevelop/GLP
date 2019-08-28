@@ -20,14 +20,24 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/id_texto_version"
+        android:id="@+id/id_texto_union"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text=""
+        android:layout_marginBottom="8dp"
+        android:text="@string/union_portada"
         android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/idimagenportada_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/id_texto_cupet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cupet_portada"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/id_texto_union"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -35,9 +45,14 @@
         android:id="@+id/idimagenportada"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
         android:contentDescription="@string/nombre_portada"
         android:src="@mipmap/ic_glp_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/id_texto_version"
+        app:layout_constraintBottom_toTopOf="@+id/id_texto_cupet"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
