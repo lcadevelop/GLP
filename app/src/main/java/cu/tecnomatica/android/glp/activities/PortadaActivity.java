@@ -13,10 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.TextView;
 import org.greenrobot.greendao.database.Database;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import cu.tecnomatica.android.glp.BuildConfig;
 import cu.tecnomatica.android.glp.R;
 import cu.tecnomatica.android.glp.database.greendao.Atencionclientes;
 import cu.tecnomatica.android.glp.database.greendao.Cliente;
@@ -84,7 +86,7 @@ public class PortadaActivity extends AppCompatActivity {
         }
     };
 
-    //String version = "";
+    String version = "";
     private final int duracion = 2000;
 
 
@@ -94,9 +96,9 @@ public class PortadaActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_portada);
         //mContentView = findViewById(R.id.id_texto_portada);
-        //version = BuildConfig.VERSION_NAME;
-        //TextView texto_vesion = (TextView)findViewById(R.id.id_texto_version);
-        //texto_vesion.setText("Versión: " + version);
+        version = BuildConfig.VERSION_NAME;
+        TextView texto_vesion = findViewById(R.id.id_texto_version);
+        texto_vesion.setText("Versión: " + version);
 
         /*//ROOM
         Appdatabase appdatabase = Room.databaseBuilder(getApplicationContext(), Appdatabase.class, "glp.db").allowMainThreadQueries().build();

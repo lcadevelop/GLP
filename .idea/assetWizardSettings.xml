@@ -61,7 +61,7 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
-                                      <entry key="foregroundImage">
+                                      <entry key="foregroundClipArt">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
@@ -72,17 +72,25 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="D:\Archivos\Tecnomática\GLP\Diseño\iconos\GLP-14.png" />
-                                      <entry key="generateLegacyIcon" value="false" />
-                                      <entry key="generateRoundIcon" value="false" />
-                                      <entry key="generateWebIcon" value="false" />
-                                      <entry key="outputName" value="ic_portada_bottom" />
+                                      <entry key="foregroundImage" value="D:\Archivos\Tecnomática\GLP\Diseño\iconos\GLP-13.png" />
+                                      <entry key="outputName" value="ic_glp_word" />
                                     </map>
                                   </option>
                                 </PersistentState>
