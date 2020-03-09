@@ -24,7 +24,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="opacityPercent" value="80" />
+                                                <entry key="opacityPercent" value="60" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -43,12 +44,25 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                      <entry key="text">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="opacityPercent" value="60" />
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="D:\Archivos\Tecnomática\GLP\Diseño\iconos\GLP-08.png" />
+                                      <entry key="imageAsset" value="D:\Archivos\Tecnomática\GLP\Diseño\3\iconos\paginas\titular.png" />
                                       <entry key="outputName" value="ic_glp_portada" />
                                       <entry key="themeColor" value="ffffff" />
                                     </map>
@@ -61,6 +75,17 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="foregroundClipArt">
                                         <value>
                                           <PersistentState>
@@ -78,7 +103,6 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -89,8 +113,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="foregroundImage" value="D:\Archivos\Tecnomática\GLP\Diseño\iconos\GLP-13.png" />
-                                      <entry key="outputName" value="ic_glp_word" />
+                                      <entry key="foregroundImage" value="D:\Archivos\Tecnomática\GLP\Diseño\3\iconos\paginas\punto venta b.png" />
+                                      <entry key="foregroundLayerName" value="ic_puntoventa_blanco_foreground" />
+                                      <entry key="outputName" value="ic_glp_launch" />
                                     </map>
                                   </option>
                                 </PersistentState>

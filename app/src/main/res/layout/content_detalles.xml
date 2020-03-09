@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.localizacion.DetallesActivity"
+    tools:showIn="@layout/activity_detalles"
+    android:layout_margin="15dp">
+
+    <ImageView
+        android:id="@+id/id_nombre_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_assignment_black_24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/id_texto_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_nombre_icon"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/palabra_nombre"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/id_texto_nombre_llenar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/id_nombre_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="5dp"
+        android:paddingRight="5dp"/>
+
+    <View
+        android:id="@+id/id_separator_0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/id_texto_nombre_llenar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="15dp"/>
+
+    <ImageView
+        android:id="@+id/id_direccion_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_location_on_black_24dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_separator_0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/id_texto_direccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/id_separator_0"
+        app:layout_constraintStart_toEndOf="@+id/id_direccion_icon"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/palabra_direccion"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/id_texto_direccion_llenar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/id_direccion_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="5dp"
+        android:paddingRight="5dp"/>
+
+    <View
+        android:id="@+id/id_separator_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/id_texto_direccion_llenar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="15dp"/>
+
+    <ImageView
+        android:id="@+id/id_horario_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_timer_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_separator_1"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/id_texto_horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/id_horario_icon"
+        app:layout_constraintTop_toBottomOf="@+id/id_separator_1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/palabra_horario"
+        android:textSize="16sp"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/id_texto_horario_llenar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_horario_icon"
+        android:textSize="16sp"
+        android:layout_marginLeft="5dp"
+        android:paddingRight="5dp"/>
+
+    <View
+        android:id="@+id/id_separator_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/id_texto_horario_llenar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="15dp"/>
+
+    <ImageView
+        android:id="@+id/id_telefono_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_phone_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_separator_2"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/id_texto_telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/id_telefono_icon"
+        app:layout_constraintTop_toBottomOf="@+id/id_separator_2"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/palabra_telefono"
+        android:textSize="16sp"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/id_texto_llamar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_separator_2"
+        android:layout_marginTop="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/palabra_llamar"
+        android:textSize="16sp"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/id_texto_telefono_llenar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_telefono_icon"
+        android:layout_marginLeft="5dp"
+        android:paddingRight="5dp"
+        android:textSize="16sp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
