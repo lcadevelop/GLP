@@ -23,13 +23,13 @@
         android:id="@+id/id_spinner_clientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/id_texto_contrato_cliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_imagen_menu_titulo" />
+        app:layout_constraintTop_toBottomOf="@+id/id_imagen_menu_titulo"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"/>
 
     <TextView
         android:id="@+id/id_texto_contrato_cliente"

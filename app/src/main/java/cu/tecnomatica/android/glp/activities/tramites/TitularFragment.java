@@ -69,8 +69,8 @@ public class TitularFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_titular, container, false);
-        TextView textView = view.findViewById(R.id.id_text_fragment_titular);
-        textView.setMovementMethod(new ScrollingMovementMethod());
+        //TextView textView = view.findViewById(R.id.id_text_fragment_titular);
+        //textView.setMovementMethod(new ScrollingMovementMethod());
 
         return view;
         // Inflate the layout for this fragment

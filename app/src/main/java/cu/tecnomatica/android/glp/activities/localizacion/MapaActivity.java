@@ -1,6 +1,7 @@
 package cu.tecnomatica.android.glp.activities.localizacion;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -44,6 +45,7 @@ import cu.tecnomatica.android.glp.database.greendao.ServiciosmecanicosDao;
 public class MapaActivity extends Activity
 {
     private static final String MAP_FILE = "/GLP/cuba.map";
+    private static final String DB_FILE = "/GLP/daoglp.db";
 
     MapView mapView;
     MapScaleBar mapScaleBar;
@@ -70,7 +72,9 @@ public class MapaActivity extends Activity
         setContentView(mapView);
         arrayList = new ArrayList<>();
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
+        //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
         Database database = helper.getWritableDb();
         DaoSession daoSession = new DaoMaster(database).newSession();
 
@@ -198,13 +202,13 @@ public class MapaActivity extends Activity
 
         //CrearMarcaTextoPuntosVenta();
 
-        CrearMarcaEmpresaComercializadora();
+        //CrearMarcaEmpresaComercializadora();
 
         //CrearMarcaTextoEmpresaComercializadora();
 
-        CrearMarcaAtencionClientes();
+        //CrearMarcaAtencionClientes();
 
-        CrearMarcaServiciosMecanicos();
+        //CrearMarcaServiciosMecanicos();
 
         if (latitud != "" || longitud != "")
         {
@@ -229,7 +233,27 @@ public class MapaActivity extends Activity
             MarkerItem markerItemcc = new MarkerItem(casacomerciales.get(i).getNombre(), "Casa Comercial", geoPointcc);
             arrayList.add(markerItemcc);
         }
-        ItemizedLayer<MarkerItem> markerItemItemizedLayercc = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolcc, null);
+        ItemizedLayer<MarkerItem> markerItemItemizedLayercc = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolcc, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, MarkerItem item)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", casacomerciales.get(index).getNombre());
+                bundle.putString("Direccion", casacomerciales.get(index).getDireccion());
+                bundle.putString("Horario", casacomerciales.get(index).getHorario());
+                bundle.putString("Telefono", casacomerciales.get(index).getTelefono());
+
+                Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, MarkerItem item) {
+                return false;
+            }
+        });
         mapView.map().layers().add(markerItemItemizedLayercc);
     }
 
@@ -274,7 +298,27 @@ public class MapaActivity extends Activity
             arrayList.add(markerItempp);
         }
 
-        ItemizedLayer<MarkerItem> markerItemItemizedLayerpp = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList,symbolpp, null);
+        ItemizedLayer<MarkerItem> markerItemItemizedLayerpp = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolpp, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, MarkerItem item)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", puntosdeventas.get(index).getNombre());
+                bundle.putString("Direccion", puntosdeventas.get(index).getDireccion());
+                bundle.putString("Horario", puntosdeventas.get(index).getHorario());
+                bundle.putString("Telefono", puntosdeventas.get(index).getTelefono());
+
+                Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, MarkerItem item) {
+                return false;
+            }
+        });
         mapView.map().layers().add(markerItemItemizedLayerpp);
     }
 
@@ -307,7 +351,7 @@ public class MapaActivity extends Activity
     {
         arrayList = new ArrayList<>();
 
-        org.oscim.backend.canvas.Bitmap bitmapPoiec = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.drawable.ic_home_green_800_24dp));
+        org.oscim.backend.canvas.Bitmap bitmapPoiec = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.mipmap.ic_glp_empresa_comercial_foreground));
         MarkerSymbol symbolec = new MarkerSymbol(bitmapPoiec, MarkerSymbol.HotspotPlace.BOTTOM_CENTER);
 
         for (int i = 0; i < listaempresacomercializadoras.size(); i++)
@@ -319,7 +363,27 @@ public class MapaActivity extends Activity
             arrayList.add(markerItemec);
         }
 
-        ItemizedLayer<MarkerItem> markerItemItemizedLayerem = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolec, null);
+        ItemizedLayer<MarkerItem> markerItemItemizedLayerem = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolec, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, MarkerItem item)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", listaempresacomercializadoras.get(index).getNombre());
+                bundle.putString("Direccion", listaempresacomercializadoras.get(index).getDireccion());
+                bundle.putString("Horario", listaempresacomercializadoras.get(index).getHorario());
+                bundle.putString("Telefono", listaempresacomercializadoras.get(index).getTelefono());
+
+                Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, MarkerItem item) {
+                return false;
+            }
+        });
         mapView.map().layers().add(markerItemItemizedLayerem);
     }
 
@@ -352,7 +416,7 @@ public class MapaActivity extends Activity
     {
         arrayList = new ArrayList<>();
 
-        org.oscim.backend.canvas.Bitmap bitmapPoiac = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.drawable.ic_home_green_800_24dp));
+        org.oscim.backend.canvas.Bitmap bitmapPoiac = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.mipmap.ic_glp_atencion_cliente_foreground));
         MarkerSymbol symbolac = new MarkerSymbol(bitmapPoiac, MarkerSymbol.HotspotPlace.BOTTOM_CENTER);
 
         for (int i = 0; i < listaatencionclientes.size(); i++)
@@ -364,7 +428,27 @@ public class MapaActivity extends Activity
             arrayList.add(markerItemac);
         }
 
-        ItemizedLayer<MarkerItem> markerItemItemizedLayerac = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolac, null);
+        ItemizedLayer<MarkerItem> markerItemItemizedLayerac = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolac, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, MarkerItem item)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", listaatencionclientes.get(index).getNombre());
+                bundle.putString("Direccion", listaatencionclientes.get(index).getDireccion());
+                bundle.putString("Horario", listaatencionclientes.get(index).getHorario());
+                bundle.putString("Telefono", listaatencionclientes.get(index).getTelefono());
+
+                Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, MarkerItem item) {
+                return false;
+            }
+        });
         mapView.map().layers().add(markerItemItemizedLayerac);
     }
 
@@ -372,7 +456,7 @@ public class MapaActivity extends Activity
     {
         arrayList = new ArrayList<>();
 
-        org.oscim.backend.canvas.Bitmap bitmapPoism = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.drawable.ic_home_green_800_24dp));
+        org.oscim.backend.canvas.Bitmap bitmapPoism = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.mipmap.ic_glp_servicios_mecanicos_foreground));
         MarkerSymbol symbolsm = new MarkerSymbol(bitmapPoism, MarkerSymbol.HotspotPlace.BOTTOM_CENTER);
 
         for (int i = 0; i < listaserviciosmecanicos.size(); i++)
@@ -384,7 +468,27 @@ public class MapaActivity extends Activity
             arrayList.add(markerItemsm);
         }
 
-        ItemizedLayer<MarkerItem> markerItemItemizedLayersm = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolsm, null);
+        ItemizedLayer<MarkerItem> markerItemItemizedLayersm = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolsm, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, MarkerItem item)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", listaserviciosmecanicos.get(index).getNombre());
+                bundle.putString("Direccion", listaserviciosmecanicos.get(index).getDireccion());
+                bundle.putString("Horario", listaserviciosmecanicos.get(index).getHorario());
+                bundle.putString("Telefono", listaserviciosmecanicos.get(index).getTelefono());
+
+                Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, MarkerItem item) {
+                return false;
+            }
+        });
         mapView.map().layers().add(markerItemItemizedLayersm);
     }
 }

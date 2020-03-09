@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import org.greenrobot.greendao.database.Database;
+
+import java.io.File;
 import java.util.List;
 import cu.tecnomatica.android.glp.R;
 import cu.tecnomatica.android.glp.activities.localizacion.MapaActivity;
@@ -27,6 +31,9 @@ import cu.tecnomatica.android.glp.database.greendao.Provincia;
  * create an instance of this fragment.
  */
 public class AtencionClientesFragment extends Fragment {
+
+    private static final String DB_FILE = "/GLP/daoglp.db";
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -85,9 +92,11 @@ public class AtencionClientesFragment extends Fragment {
         textodireccion = (TextView)view.findViewById(R.id.id_direccion_atencion_clientes);
         textohorario = (TextView)view.findViewById(R.id.id_horario_atencion_clientes);
         textotelefono = (TextView)view.findViewById(R.id.id_telefono_atencion_clientes);
-        mapatexto = (TextView)view.findViewById(R.id.id_mapa__atencion_clientes);
+        //mapatexto = (TextView)view.findViewById(R.id.id_mapa__atencion_clientes);
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), "daoglp.db");
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), dbPath);
+        //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), "daoglp.db");
         Database database = helper.getWritableDb();
         final DaoSession daoSession = new DaoMaster(database).newSession();
 
@@ -110,7 +119,7 @@ public class AtencionClientesFragment extends Fragment {
         textohorario.setText(atencionclientes.getHorario());
         textotelefono.setText(atencionclientes.getTelefono());
 
-        mapatexto.setOnClickListener(new View.OnClickListener() {
+        /*mapatexto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -123,7 +132,7 @@ public class AtencionClientesFragment extends Fragment {
 
                 startActivity(intent);
             }
-        });
+        });*/
 
         return view;
         // Inflate the layout for this fragment

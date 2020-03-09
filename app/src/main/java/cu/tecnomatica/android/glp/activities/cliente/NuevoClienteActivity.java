@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import org.greenrobot.greendao.database.Database;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import cu.tecnomatica.android.glp.R;
@@ -47,7 +49,9 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class NuevoClienteActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class NuevoClienteActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>
+{
+    private static final String DB_FILE = "/GLP/daoglp.db";
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -108,7 +112,9 @@ public class NuevoClienteActivity extends AppCompatActivity implements LoaderCal
 
         mPasswordView = (Spinner) findViewById(R.id.idcombotipocontrato);
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
+        //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
         Database database = helper.getWritableDb();
         final DaoSession daoSession = new DaoMaster(database).newSession();
 
@@ -129,7 +135,9 @@ public class NuevoClienteActivity extends AppCompatActivity implements LoaderCal
         combotiposcontratos = (Spinner)findViewById(R.id.idcombotipocontrato);
 
         ArrayAdapter<String> adaptertipoconrato = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
-        for (int i=0; i<tiposcontratos.size(); i++)
+        adaptertipoconrato.add("Tipo de Contrato");
+
+        for (int i = 0; i < tiposcontratos.size(); i++)
         {
             adaptertipoconrato.add(tiposcontratos.get(i).getNombre());
         }
@@ -139,7 +147,13 @@ public class NuevoClienteActivity extends AppCompatActivity implements LoaderCal
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                contratoseleccionado = tiposcontratos.get(position);
+                if (position != 0)
+                {
+                    contratoseleccionado = tiposcontratos.get(position-1);
+                }
+                else
+                {
+                }
             }
 
             @Override
@@ -151,7 +165,9 @@ public class NuevoClienteActivity extends AppCompatActivity implements LoaderCal
         combolistamunicipios = (Spinner)findViewById(R.id.idcombomunicipionuevocliente);
         combopuntosventa = (Spinner)findViewById(R.id.idcombopuntoventanuevocliente);
 
-        ArrayAdapter<String> adaptermunicipiocliente = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<String> adaptermunicipiocliente = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
+        adaptermunicipiocliente.add("Municipio del Cliente");
+
         for (int i=0; i<listamunicipios.size(); i++)
         {
             adaptermunicipiocliente.add(listamunicipios.get(i).getNombre());
@@ -163,16 +179,26 @@ public class NuevoClienteActivity extends AppCompatActivity implements LoaderCal
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                municipioseleccionado = listamunicipios.get(position);
-
-                listapuntosventa = daoSession.getPuntoventaDao().queryBuilder().where(PuntoventaDao.Properties.Idmunicipio.like(municipioseleccionado.getIdmunicipio().toString())).list();
-                ArrayAdapter<String> adapterpuntosdeventamunicipio = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item);
-
-                for (int i = 0; i < listapuntosventa.size(); i++)
+                if (position != 0)
                 {
-                    adapterpuntosdeventamunicipio.add(listapuntosventa.get(i).getNombre());
+                    municipioseleccionado = listamunicipios.get(position-1);
+
+                    listapuntosventa = daoSession.getPuntoventaDao().queryBuilder().where(PuntoventaDao.Properties.Idmunicipio.like(municipioseleccionado.getIdmunicipio().toString())).list();
+
+                    ArrayAdapter<String> adapterpuntosdeventamunicipio = new ArrayAdapter<>(parent.getContext(), R.layout.support_simple_spinner_dropdown_item);
+                    adapterpuntosdeventamunicipio.add("Punto de Venta del Cliente");
+
+                    for (int i = 0; i < listapuntosventa.size(); i++) {
+                        adapterpuntosdeventamunicipio.add(listapuntosventa.get(i).getNombre());
+                    }
+                    combopuntosventa.setAdapter(adapterpuntosdeventamunicipio);
                 }
-                combopuntosventa.setAdapter(adapterpuntosdeventamunicipio);
+                else
+                {
+                    ArrayAdapter<String> adapterpuntosdeventamunicipio = new ArrayAdapter<>(parent.getContext(), R.layout.support_simple_spinner_dropdown_item);
+                    adapterpuntosdeventamunicipio.add("Punto de Venta del Cliente");
+                    combopuntosventa.setAdapter(adapterpuntosdeventamunicipio);
+                }
             }
 
             @Override
@@ -185,7 +211,10 @@ public class NuevoClienteActivity extends AppCompatActivity implements LoaderCal
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                puntoventaseleccionado = listapuntosventa.get(position);
+                if (position != 0)
+                {
+                    puntoventaseleccionado = listapuntosventa.get(position-1);
+                }
             }
 
             @Override
@@ -411,7 +440,9 @@ public class NuevoClienteActivity extends AppCompatActivity implements LoaderCal
 
     public void RegistarCliente()
     {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
+        //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
         Database database = helper.getWritableDb();
         DaoSession daoSession = new DaoMaster(database).newSession();
 

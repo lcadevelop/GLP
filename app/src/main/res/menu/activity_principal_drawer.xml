@@ -21,13 +21,13 @@
                 android:icon="@drawable/ic_info_black_24dp"
                 android:title="@string/informaciones" />
             <item
-                android:id="@+id/id_menu_tramites"
-                android:icon="@drawable/ic_assignment_black_24dp"
-                android:title="@string/tramites" />
-            <item
                 android:id="@+id/id_menu_servicioes"
                 android:icon="@drawable/ic_view_list_black_24dp"
                 android:title="@string/servicios" />
+            <item
+                android:id="@+id/id_menu_tramites"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="@string/tramites" />
             <item
                 android:id="@+id/id_menu_localizacion"
                 android:icon="@drawable/ic_location_on_black_24dp"
@@ -45,10 +45,14 @@
                 android:id="@+id/id_menu_configuracion"
                 android:icon="@drawable/ic_settings_24dp"
                 android:title="@string/menu_configuracion" />-->
-            <item
+            <!--<item
                 android:id="@+id/id_menu_ayuda"
                 android:icon="@drawable/ic_help_24dp"
-                android:title="@string/menu_ayuda" />
+                android:title="@string/menu_ayuda" />-->
+            <item
+                android:id="@+id/id_menu_creditos"
+                android:title="@string/menu_creditos"
+                android:icon="@drawable/ic_people_black_24dp"/>
             <item
                 android:id="@+id/id_menu_salir"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"

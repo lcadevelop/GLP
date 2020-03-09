@@ -66,8 +66,8 @@ public class AltasBajasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_altas_bajas, container, false);
-        TextView textView = view.findViewById(R.id.id_text_fragment_altasbajas);
-        textView.setMovementMethod(new ScrollingMovementMethod());
+        //TextView textView = view.findViewById(R.id.id_text_fragment_altasbajas);
+        //textView.setMovementMethod(new ScrollingMovementMethod());
         return view;
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_altas_bajas, container, false);

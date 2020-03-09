@@ -67,8 +67,8 @@ public class ContratoFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_contrato, container, false);
-        TextView textView = view.findViewById(R.id.id_text_fragment_contrato);
-        textView.setMovementMethod(new ScrollingMovementMethod());
+        //TextView textView = view.findViewById(R.id.id_text_fragment_contrato);
+        //textView.setMovementMethod(new ScrollingMovementMethod());
         return view;
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_contrato, container, false);

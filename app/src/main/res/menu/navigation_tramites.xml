@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/id_navigation_tramite_1"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@mipmap/ic_glp_titular_foreground"
         android:title="@string/cambio_titular_titulo" />
 
     <item
         android:id="@+id/id_navigation_tramite_2"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@mipmap/ic_glp_altas_foreground"
         android:title="@string/altas_bajas_titulo" />
 
     <item
         android:id="@+id/id_navigation_tramite_3"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@mipmap/ic_glp_contrato_foreground"
         android:title="@string/gestionar_contrato_titulo" />
 </menu>

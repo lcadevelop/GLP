@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
+import android.os.Environment;
 import android.view.View;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
@@ -15,22 +16,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.greenrobot.greendao.database.Database;
+import java.io.File;
 import java.util.List;
 import cu.tecnomatica.android.glp.R;
 import cu.tecnomatica.android.glp.activities.ayuda.AyudaActivity;
+import cu.tecnomatica.android.glp.activities.ayuda.CreditosActivity;
 import cu.tecnomatica.android.glp.activities.cliente.NuevoClienteActivity;
 import cu.tecnomatica.android.glp.activities.compras.CompraActivity;
 import cu.tecnomatica.android.glp.activities.configuracion.ConfiguracionActivity;
-import cu.tecnomatica.android.glp.activities.informaciones.InformacionesActivity;
+import cu.tecnomatica.android.glp.activities.informacionestab.InformacionesTabActivity;
 import cu.tecnomatica.android.glp.activities.localizacion.MapaActivity;
-import cu.tecnomatica.android.glp.activities.servicios.ServiciosActivity;
-import cu.tecnomatica.android.glp.activities.tramites.TramitesActivity;
+import cu.tecnomatica.android.glp.activities.serviciostab.ServiciosTabActivity;
+import cu.tecnomatica.android.glp.activities.tramitestab.TramitesTabActivity;
 import cu.tecnomatica.android.glp.database.greendao.Cliente;
 import cu.tecnomatica.android.glp.database.greendao.DaoMaster;
 import cu.tecnomatica.android.glp.database.greendao.DaoSession;
@@ -44,9 +46,10 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
     private Spinner spinnerclientes;
     private TextView texto_contrato_cliente;
 
+    private static final String DB_FILE = "/GLP/daoglp.db";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,9 +60,11 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         ImageView principal_informaciones = findViewById(R.id.id_principal_informaciones);
         ImageView principal_mapa = findViewById(R.id.id_principal_localizacion);
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
         Database database = helper.getWritableDb();
         final DaoSession daoSession = new DaoMaster(database).newSession();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -76,9 +81,11 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         spinnerclientes = (Spinner) hView.findViewById(R.id.id_spinner_clientes);
         texto_contrato_cliente = (TextView) hView.findViewById(R.id.id_texto_contrato_cliente);
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
 
         Cliente clientetemporal = new Cliente();
+        Cliente clienteinvitado = new Cliente();
+        Boolean clienteexterno = false;
 
         for (int i = 0; i < listaclientes.size(); i++)
         {
@@ -91,6 +98,16 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
 
         listarecorrer.add(clientetemporal);
 
+
+            for (int i = 0; i < listaclientes.size(); i++) {
+                if (listaclientes.get(i).getTitular().equals("Invitado")) {
+                    clienteinvitado = listaclientes.get(i);
+                    listaclientes.remove(clienteinvitado);
+                    clienteexterno = true;
+                }
+            }
+
+
         if (listaclientes.size() > 0)
         {
             for (int i = 0; i < listaclientes.size(); i++)
@@ -99,34 +116,34 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
             }
         }
 
+        if (clienteexterno) {
+            listarecorrer.add(clienteinvitado);
+        }
+
         for (int i = 0; i < listarecorrer.size(); i++)
         {
             adapter.add(listarecorrer.get(i).getTitular());
         }
 
         adapter.add("Agregar Cliente");
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerclientes.setAdapter(adapter);
+
 
         spinnerclientes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                if (parent.getItemAtPosition(position).equals("Agregar Cliente"))
-                {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).equals("Agregar Cliente")) {
                     Intent intent = new Intent(PrincipalActivity.this, NuevoClienteActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else
-                {
+                } else {
                     Cliente activo = listarecorrer.get(position);
                     activo.setActivo(true);
                     texto_contrato_cliente.setText(activo.getNumerocontrato());
                     daoSession.insertOrReplace(activo);
-                    for (int i = 0; i < listarecorrer.size(); i++)
-                    {
-                        if (i != position)
-                        {
+                    for (int i = 0; i < listarecorrer.size(); i++) {
+                        if (i != position) {
                             listarecorrer.get(i).setActivo(false);
                             daoSession.insertOrReplace(listarecorrer.get(i));
                         }
@@ -148,33 +165,31 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(PrincipalActivity.this, TramitesActivity.class);
+                //Intent intent = new Intent(PrincipalActivity.this, TramitesActivity.class);
+                Intent intent = new Intent(PrincipalActivity.this, TramitesTabActivity.class);
                 startActivity(intent);
             }
         });
 
         principal_servicios.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(PrincipalActivity.this, ServiciosActivity.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this, ServiciosTabActivity.class);
                 startActivity(intent);
             }
         });
 
         principal_informaciones.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(PrincipalActivity.this, InformacionesActivity.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this, InformacionesTabActivity.class);
                 startActivity(intent);
             }
         });
 
         principal_mapa.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(PrincipalActivity.this, MapaActivity.class);
                 startActivity(intent);
             }
@@ -229,14 +244,11 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        /*if (id == R.id.id_menu_agregar_cliente)
+        if (id == R.id.id_menu_gestionar_compra)
         {
-            Intent intent = new Intent(PrincipalActivity.this, NuevoClienteActivity.class);
-            startActivity(intent);
-        }
-        else*/ if (id == R.id.id_menu_gestionar_compra)
-        {
-            DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+            String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+            DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
+            //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
             Database database = helper.getWritableDb();
             final DaoSession daoSession = new DaoMaster(database).newSession();
 
@@ -270,12 +282,12 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         }
         else if (id == R.id.id_menu_informaciones)
         {
-            Intent intent = new Intent(PrincipalActivity.this, InformacionesActivity.class);
+            Intent intent = new Intent(PrincipalActivity.this, InformacionesTabActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.id_menu_tramites)
         {
-            Intent intent = new Intent(PrincipalActivity.this, TramitesActivity.class);
+            Intent intent = new Intent(PrincipalActivity.this, TramitesTabActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.id_menu_localizacion)
@@ -285,12 +297,14 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         }
         else if (id == R.id.id_menu_servicioes)
         {
-            Intent intent = new Intent(PrincipalActivity.this, ServiciosActivity.class);
+            Intent intent = new Intent(PrincipalActivity.this, ServiciosTabActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.id_menu_provincia)
         {
-            DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+            String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+            DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
+            //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
             Database database = helper.getWritableDb();
             final DaoSession daoSession = new DaoMaster(database).newSession();
 
@@ -338,9 +352,9 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
             Intent intent = new Intent(PrincipalActivity.this, ConfiguracionActivity.class);
             startActivity(intent);
         }*/
-        else if (id == R.id.id_menu_ayuda)
+        else if (id == R.id.id_menu_creditos)
         {
-            Intent intent = new Intent(PrincipalActivity.this, AyudaActivity.class);
+            Intent intent = new Intent(PrincipalActivity.this, CreditosActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.id_menu_salir)

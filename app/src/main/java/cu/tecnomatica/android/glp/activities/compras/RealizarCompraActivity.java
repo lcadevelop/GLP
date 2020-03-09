@@ -3,10 +3,12 @@ package cu.tecnomatica.android.glp.activities.compras;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import org.greenrobot.greendao.database.Database;
+import java.io.File;
 import java.util.Calendar;
 import java.util.List;
 import cu.tecnomatica.android.glp.R;
@@ -17,6 +19,8 @@ import cu.tecnomatica.android.glp.database.greendao.DaoSession;
 
 public class RealizarCompraActivity extends AppCompatActivity
 {
+    private static final String DB_FILE = "/GLP/daoglp.db";
+
     private DatePicker datePicker;
     private Button boton;
     private Cliente clienteactivo;
@@ -28,9 +32,12 @@ public class RealizarCompraActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realizar_compra);
 
-        final int[] ciclo = new int[]{44,26,24,21,17,14,12,10,10,8};
+        final int[] cicloviejo = new int[]{44,26,24,21,17,14,12,10,10,8};
+        final int[] ciclo = new int[]{44,35,32,32,30,28,24,20,18,16};
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
+        //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
         Database database = helper.getWritableDb();
         final DaoSession daoSession = new DaoMaster(database).newSession();
 

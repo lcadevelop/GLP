@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.CalendarContract;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AlertDialog;
@@ -18,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.greenrobot.greendao.database.Database;
+import java.io.File;
 import java.util.Calendar;
 import java.util.List;
 import cu.tecnomatica.android.glp.R;
@@ -30,6 +32,8 @@ import cu.tecnomatica.android.glp.helps.compras.ComprasHelp;
 
 public class CompraActivity extends AppCompatActivity
 {
+    private static final String DB_FILE = "/GLP/daoglp.db";
+
     private ComprasHelp[] comprasHelps;
     private List<Compra> compras;
     private ListView listacompras;
@@ -63,7 +67,9 @@ public class CompraActivity extends AppCompatActivity
             }
         });
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, dbPath);
+        //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "daoglp.db");
         Database database = helper.getWritableDb();
         DaoSession daoSession = new DaoMaster(database).newSession();
 

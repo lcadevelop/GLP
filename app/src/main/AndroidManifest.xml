@@ -14,13 +14,56 @@
     <application
         android:allowBackup="false"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_glp"
+        android:icon="@mipmap/ic_glp_launch_foreground"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_glp_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ayuda.CreditosActivity" />
+        <activity
+            android:name=".activities.localizacion.DetallesActivity"
+            android:label="@string/title_activity_detalles"
+            android:parentActivityName=".activities.localizacion.MapaActivity"
+            android:theme="@style/NewTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cu.tecnomatica.android.glp.activities.localizacion.MapaActivity" />
+        </activity>
+        <activity
+            android:name=".activities.tramitestab.TramitesTabActivity"
+            android:label="@string/title_activity_tramites"
+            android:parentActivityName=".activities.PrincipalActivity"
+            android:theme="@style/NewTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cu.tecnomatica.android.glp.activities.PrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.serviciostab.ServiciosTabActivity"
+            android:label="@string/title_activity_servicios"
+            android:parentActivityName=".activities.PrincipalActivity"
+            android:theme="@style/NewTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cu.tecnomatica.android.glp.activities.PrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.informacionestab.InformacionesTabActivity"
+            android:label="@string/title_activity_informaciones"
+            android:parentActivityName=".activities.PrincipalActivity"
+            android:theme="@style/NewTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cu.tecnomatica.android.glp.activities.PrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ayuda.CreditosActivity"
+            android:label="@string/menu_creditos"
+            android:parentActivityName=".activities.PrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cu.tecnomatica.android.glp.activities.PrincipalActivity" />
+        </activity>
         <activity android:name=".activities.compras.RealizarCompraActivity" />
         <activity
             android:name=".activities.PortadaActivity"
@@ -37,30 +80,6 @@
             android:name=".activities.PrincipalActivity"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.tramites.TramitesActivity"
-            android:label="@string/title_activity_tramites"
-            android:parentActivityName=".activities.PrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cu.tecnomatica.android.glp.activities.PrincipalActivity" />
-        </activity>
-        <activity
-            android:name=".activities.servicios.ServiciosActivity"
-            android:label="@string/title_activity_servicios"
-            android:parentActivityName=".activities.PrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cu.tecnomatica.android.glp.activities.PrincipalActivity" />
-        </activity>
-        <activity
-            android:name=".activities.informaciones.InformacionesActivity"
-            android:label="@string/title_activity_informaciones"
-            android:parentActivityName=".activities.PrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cu.tecnomatica.android.glp.activities.PrincipalActivity" />
-        </activity>
         <activity
             android:name=".activities.configuracion.ConfiguracionActivity"
             android:label="@string/title_activity_configuracion"

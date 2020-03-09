@@ -6,7 +6,6 @@ import cu.tecnomatica.android.glp.R;
 
 public class AyudaActivity extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

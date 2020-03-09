@@ -3,7 +3,7 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "cu.tecnomatica.android.glp"
         minSdkVersion 15
@@ -32,41 +32,17 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //ROOM
-    implementation 'androidx.room:room-runtime:2.1.0'
-    annotationProcessor 'androidx.room:room-compiler:2.1.0'
-    androidTestImplementation 'androidx.room:room-testing:2.1.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
-
     //GREENDAO
     implementation 'org.greenrobot:greendao:3.2.2'
-
-    //OSM
-    //implementation 'org.osmdroid:osmdroid-android:6.0.3'
-    //implementation 'org.osmdroid:osmdroid-wms:6.0.3'
-    //implementation 'org.osmdroid:osmdroid-mapsforge:6.0.3'
-    //implementation 'org.osmdroid:osmdroid-geopackage:6.0.3'
-    //implementation 'org.osmdroid:osmdroid-third-party:6.0.3'
-
-    //MAPSFORGE
-    //implementation 'org.mapsforge:mapsforge-core:0.10.0'
-    //implementation 'org.mapsforge:mapsforge-map:0.10.0'
-    //implementation 'org.mapsforge:mapsforge-map-reader:0.10.0'
-    //implementation 'org.mapsforge:mapsforge-themes:0.10.0'
-    //implementation 'net.sf.kxml:kxml2:2.3.0'
-
-    //implementation 'org.mapsforge:mapsforge-map-android:0.10.0'
-    //implementation 'com.caverock:androidsvg:1.3'
 
     //VTM
     implementation 'org.mapsforge:vtm:0.11.1'

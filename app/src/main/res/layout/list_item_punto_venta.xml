@@ -1,84 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
 
         <ImageView
-            android:id="@+id/id_direccion_icon_pt"
+            android:id="@+id/id_direccion_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_location_on_black_24dp"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/id_texto_direccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/id_direccion_icon"
+            android:layout_marginLeft="5dp"
+            android:text="@string/palabra_direccion"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/id_direccion_texto_pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"/>
-    </LinearLayout>
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/id_direccion_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="5dp"
+            android:paddingRight="5dp"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/id_separator_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@+id/id_direccion_texto_pt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="15dp"/>
 
         <ImageView
-            android:id="@+id/id_horario_icon_pt"
+            android:id="@+id/id_horario_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_timer_black_24dp"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_1"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:id="@+id/id_texto_horario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/id_horario_icon"
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/palabra_horario"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/id_horario_texto_pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"/>
-    </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_horario_icon"
+            android:textSize="16sp"
+            android:layout_marginLeft="5dp"
+            android:paddingRight="5dp"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        <View
+            android:id="@+id/id_separator_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@+id/id_horario_texto_pt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="15dp"/>
 
         <ImageView
-            android:id="@+id/id_telefono_icon_pt"
+            android:id="@+id/id_telefono_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_phone_black_24dp"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_2"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:id="@+id/id_texto_telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/id_telefono_icon"
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_2"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/palabra_telefono"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/id_texto_llamar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_2"
+            android:layout_marginTop="15dp"
+            android:paddingRight="5dp"
+            android:text="@string/palabra_llamar"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/id_telefono_texto_pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"/>
-    </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_telefono_icon"
+            android:layout_marginLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="16sp"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        <View
+            android:id="@+id/id_separator_3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@+id/id_telefono_texto_pt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="15dp"/>
 
         <ImageView
-            android:id="@+id/id_mapa_icon_pv"
+            android:id="@+id/id_mapa_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_location_on_black_24dp"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_separator_3"
+            android:layout_marginTop="15dp"/>
+
         <TextView
             android:id="@+id/id_mapa_texto_pv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"
-            android:text="Ver en Mapa"/>
-    </LinearLayout>
+            android:text="@string/palabra_mapa"
+            app:layout_constraintStart_toEndOf="@+id/id_mapa_icon"
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
 
-</LinearLayout>
+        <View
+            android:id="@+id/id_separator_4"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@+id/id_mapa_texto_pv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="15dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

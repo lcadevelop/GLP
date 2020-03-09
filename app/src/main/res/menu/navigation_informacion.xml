@@ -4,16 +4,16 @@
 
     <item
         android:id="@+id/id_navigation_informacion_0"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@mipmap/ic_glp_comercializadora_foreground"
         android:title="@string/empresa_comercializadora" />
 
     <item
         android:id="@+id/id_navigation_informacion_1"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@mipmap/ic_glp_ccomercial_foreground"
         android:title="@string/casas_comerciales" />
 
     <item
         android:id="@+id/id_navigation_informacion_2"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@mipmap/ic_glp_pventa_foreground"
         android:title="@string/puntos_venta" />
 </menu>

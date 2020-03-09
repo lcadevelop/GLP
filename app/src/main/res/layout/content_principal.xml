@@ -11,59 +11,16 @@
     android:fitsSystemWindows="true">
 
     <ImageView
-        android:id="@+id/id_principal_tramites"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:src="@mipmap/ic_principal_tramites_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/id_principal_servicios"
-        app:layout_constraintEnd_toStartOf="@+id/id_principal_servicios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/id_principal_tramites_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tramites"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/id_principal_tramites"
-        app:layout_constraintStart_toStartOf="@+id/id_principal_tramites"
-        app:layout_constraintTop_toBottomOf="@+id/id_principal_tramites" />
-
-    <ImageView
-        android:id="@+id/id_principal_servicios"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@mipmap/ic_principal_servicios_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/id_principal_informaciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/id_principal_tramites"
-        app:layout_constraintTop_toBottomOf="@+id/id_principal_tramites" />
-
-    <TextView
-        android:id="@+id/id_principal_servicios_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/id_principal_servicios"
-        app:layout_constraintStart_toStartOf="@+id/id_principal_servicios"
-        app:layout_constraintEnd_toEndOf="@+id/id_principal_servicios"
-        android:text="@string/servicios"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
-
-    <ImageView
         android:id="@+id/id_principal_informaciones"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@mipmap/ic_principal_informaciones_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/id_principal_localizacion"
-        app:layout_constraintEnd_toStartOf="@+id/id_principal_servicios"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/id_principal_servicios"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_principal_servicios" />
+        app:layout_constraintEnd_toStartOf="@+id/id_principal_servicios"
+         />
 
     <TextView
         android:id="@+id/id_principal_informaciones_texto"
@@ -78,14 +35,61 @@
         android:textSize="20dp"/>
 
     <ImageView
+        android:id="@+id/id_principal_servicios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@mipmap/ic_principal_servicios_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_informaciones"
+        app:layout_constraintBottom_toTopOf="@+id/id_principal_tramites"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_principal_informaciones"
+         />
+
+    <TextView
+        android:id="@+id/id_principal_servicios_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_servicios"
+        app:layout_constraintStart_toStartOf="@+id/id_principal_servicios"
+        app:layout_constraintEnd_toEndOf="@+id/id_principal_servicios"
+        android:text="@string/servicios"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+    <ImageView
+        android:id="@+id/id_principal_tramites"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@mipmap/ic_principal_tramites_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_servicios"
+        app:layout_constraintBottom_toTopOf="@+id/id_principal_localizacion"
+        app:layout_constraintEnd_toStartOf="@+id/id_principal_servicios"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/id_principal_tramites_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tramites"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/id_principal_tramites"
+        app:layout_constraintStart_toStartOf="@+id/id_principal_tramites"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_tramites" />
+
+
+    <ImageView
         android:id="@+id/id_principal_localizacion"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@mipmap/ic_principal_localizacion_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/id_principal_tramites"
         app:layout_constraintBottom_toTopOf="@+id/id_principal_localizacion_texto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/id_principal_informaciones"
-        app:layout_constraintTop_toBottomOf="@+id/id_principal_informaciones" />
+        app:layout_constraintStart_toEndOf="@+id/id_principal_tramites"
+         />
 
     <TextView
         android:id="@+id/id_principal_localizacion_texto"

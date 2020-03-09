@@ -1,8 +1,9 @@
-package cu.tecnomatica.android.glp.activities.informaciones;
+package cu.tecnomatica.android.glp.activities.servicios;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import org.greenrobot.greendao.database.Database;
+import java.io.File;
 import java.util.List;
 import cu.tecnomatica.android.glp.R;
 import cu.tecnomatica.android.glp.database.greendao.Provincia;
@@ -26,6 +28,8 @@ import cu.tecnomatica.android.glp.activities.localizacion.MapaActivity;
 
 public class CasaComercialFragment extends Fragment
 {
+    private static final String DB_FILE = "/GLP/daoglp.db";
+
     private Spinner combo_municipios;
     private CasaComercialHelp casaComercialHelps;
 
@@ -62,7 +66,10 @@ public class CasaComercialFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_casa_comercial, container, false);
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), "daoglp.db");
+
+        String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), dbPath);
+        //DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), "daoglp.db");
         Database database = helper.getWritableDb();
         final DaoSession daoSession = new DaoMaster(database).newSession();
 

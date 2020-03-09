@@ -3,9 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.informaciones.PuntoVentaFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.servicios.PuntoVentaFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+    <ImageView
+        android:id="@+id/id_municipio_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_location_on_black_24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/id_texto_municipio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_municipio_icon"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/palabra_municipio"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <Spinner
+        android:id="@+id/id_combo_municipios_ptos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/id_municipio_icon"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <View
+        android:id="@+id/id_separator_0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/id_combo_municipios_ptos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="15dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_lista_puntoventa"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_0">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -19,13 +80,12 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/localizacion" />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/id_lista_puntoventa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="55dp">
-
-        </ListView>
-    </LinearLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>-->
 
 </FrameLayout>
