@@ -60,6 +60,8 @@
     //INFORMACIONES
     <string name="informaciones">Informaciones</string>
     <string name="title_activity_informaciones">Informaciones Útiles</string>
+    <string name="ciclo_venta">Ciclo de Venta</string>
+    <string name="medidas_temporales">Medidas Temporales</string>
     <string name="empresa_comercializadora">Comercializadora</string>
     <string name="casas_comerciales">Casas Comerciales</string>
     <string name="informacion_1_descripcion">Descripción de la Información 1</string>
@@ -260,6 +262,20 @@ Los precios de cada Servicio A clientes LIBERADOS serán: \n
 \n
 Y no se le cobrara la mano de obra. \n
 </string>
+
+    <string name="texto_ciclo_venta">La Unión Cubapetróleo dio a conocer en su página web algundas medidas de ampliación de los ciclos de venta de gas licuado a partir del escenario actual. Entre ellas reseña la de extender el ciclo de venta de reaprovisionamiento de los consumidores normados comenzando por los núcleos de 2 personas. Estos clientes no estarán autorizados a comprar GLP Liberado</string>
+    <string name="ciclo_venta_composicion_nucleo">Composición del núcleo</string>
+    <string name="ciclo_venta_entrega_normal">Ciclo de entrega normal (Días)</string>
+    <string name="ciclo_venta_entrega_actual">Ciclo de entrega actual (Días)</string>
+    <string name="ciclo_venta_10_mas">10 o Más</string>
+
+    <string name="medidas_texto">Otras medidas implementadas son:</string>
+    <string name="medidas_1">Los consumidores de GLP Liberado podrán adquirir un cilindro cada 60 días.</string>
+    <string name="medidas_2">Se mantiene la entrega a los consumidores que reciben el producto de reserva (10kg en cada semestre) y se autoriza la venta de un cilindro cada 60 días.</string>
+    <string name="medidas_3">Los trabajadores por cuenta propia podrán adquirir un cilindro cada 60 días.</string>
+    <string name="medidas_4">Se exhorta a la población a adoptar medidas de ahorro y uso eficiente del gas licuado.</string>
+
+
     <string name="title_activity_info_tab">InfoTabActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

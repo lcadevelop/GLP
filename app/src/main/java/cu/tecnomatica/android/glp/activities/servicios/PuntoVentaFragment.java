@@ -193,7 +193,7 @@ public class PuntoVentaFragment extends Fragment
                 });
                 recyclerView.setAdapter(adaptadorPuntoVenta);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+                //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
                 //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL));
             }
 

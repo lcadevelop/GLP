@@ -1,5 +1,7 @@
 package cu.tecnomatica.android.glp.helps.puntoventa;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import cu.tecnomatica.android.glp.R;
+import cu.tecnomatica.android.glp.activities.localizacion.MapaActivity;
 
 public class AdaptadorPuntoVenta extends RecyclerView.Adapter<AdaptadorPuntoVenta.PuntosVentaViewHolder> implements View.OnClickListener
 {
@@ -68,7 +71,6 @@ public class AdaptadorPuntoVenta extends RecyclerView.Adapter<AdaptadorPuntoVent
             horario = (TextView) itemView.findViewById(R.id.id_horario_texto_pt);
             telefono = (TextView) itemView.findViewById(R.id.id_telefono_texto_pt);
             mapa = (TextView)itemView.findViewById(R.id.id_mapa_texto_pv);
-
         }
 
         public void BindPuntoVenta(PuntoVentaHelp puntoVentaHelp)

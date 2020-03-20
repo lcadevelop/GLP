@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,7 @@ public class AtencionClientesFragment extends Fragment {
         textodireccion = (TextView)view.findViewById(R.id.id_direccion_atencion_clientes);
         textohorario = (TextView)view.findViewById(R.id.id_horario_atencion_clientes);
         textotelefono = (TextView)view.findViewById(R.id.id_telefono_atencion_clientes);
-        //mapatexto = (TextView)view.findViewById(R.id.id_mapa__atencion_clientes);
+        mapatexto = (TextView)view.findViewById(R.id.id_mapa__atencion_clientes);
 
         String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), dbPath);
@@ -119,7 +120,7 @@ public class AtencionClientesFragment extends Fragment {
         textohorario.setText(atencionclientes.getHorario());
         textotelefono.setText(atencionclientes.getTelefono());
 
-        /*mapatexto.setOnClickListener(new View.OnClickListener() {
+        mapatexto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -132,7 +133,7 @@ public class AtencionClientesFragment extends Fragment {
 
                 startActivity(intent);
             }
-        });*/
+        });
 
         return view;
         // Inflate the layout for this fragment

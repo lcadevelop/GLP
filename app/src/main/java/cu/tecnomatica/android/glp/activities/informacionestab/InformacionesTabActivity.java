@@ -21,12 +21,11 @@ public class InformacionesTabActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         TabLayout tabs = findViewById(R.id.tabs_informaciones);
-        tabs.addTab(tabs.newTab().setText(R.string.empresa_comercializadora).setIcon(R.mipmap.ic_comercializadora_blanco_foreground));
-        tabs.addTab(tabs.newTab().setText(R.string.casas_comerciales).setIcon(R.mipmap.ic_casascomerciales_blanco_foreground));
-        tabs.addTab(tabs.newTab().setText(R.string.puntos_venta).setIcon(R.mipmap.ic_puntoventa_blanco_foreground));
+        tabs.addTab(tabs.newTab().setText(R.string.ciclo_venta).setIcon(R.mipmap.ic_puntoventa_blanco_foreground));
+        tabs.addTab(tabs.newTab().setText(R.string.medidas_temporales).setIcon(R.mipmap.ic_contrato_blanco_foreground));
+
         tabs.setTabGravity(TabLayout.GRAVITY_FILL);
         tabs.setTabMode(TabLayout.MODE_FIXED);
-        tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         final SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), tabs.getTabCount());
 
