@@ -186,6 +186,13 @@ public class PuntoVentaFragment extends Fragment
 
                         bundle.putString("Latitud", arrayListPuntosVenta.get(recyclerView.getChildPosition(v)).getLatitud());
                         bundle.putString("Longitud", arrayListPuntosVenta.get(recyclerView.getChildPosition(v)).getLongitud());
+
+                        bundle.putString("Bandera", "PuntoVenta");
+
+                        bundle.putString("Nombre", "Nombre");
+                        bundle.putString("Direccion", arrayListPuntosVenta.get(recyclerView.getChildPosition(v)).getDireccion());
+                        bundle.putString("Horario", arrayListPuntosVenta.get(recyclerView.getChildPosition(v)).getHorario());
+                        bundle.putString("Telefono", arrayListPuntosVenta.get(recyclerView.getChildPosition(v)).getTelefono());
                         intent.putExtras(bundle);
 
                         startActivity(intent);

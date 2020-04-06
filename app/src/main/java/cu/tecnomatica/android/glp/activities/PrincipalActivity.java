@@ -311,7 +311,7 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
             AlertDialog.Builder listaprovincias = new AlertDialog.Builder(this);
             listaprovincias.setTitle("Seleccione la Provincia");
 
-            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
+            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice);
 
             for (int i = 0; i < provincias.size(); i++)
             {

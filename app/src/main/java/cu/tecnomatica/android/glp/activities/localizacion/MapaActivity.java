@@ -49,8 +49,16 @@ public class MapaActivity extends Activity
 
     MapView mapView;
     MapScaleBar mapScaleBar;
+
     String latitud = "";
-    String longitud = "";
+    String longitud = "No";
+
+    String bandera = "";
+
+    String nombre = "";
+    String direccion = "";
+    String horario = "";
+    String telefono = "";
 
     ArrayList<MarkerItem> arrayList;
 
@@ -100,11 +108,27 @@ public class MapaActivity extends Activity
             Bundle bundle = this.getIntent().getExtras();
             latitud = bundle.getString("Latitud");
             longitud = bundle.getString("Longitud");
+            bandera = bundle.getString("Bandera");
+
+            if (!bandera.equals("No"))
+            {
+                nombre = bundle.getString("Nombre");
+                direccion = bundle.getString("Direccion");
+                horario = bundle.getString("Horario");
+                telefono = bundle.getString("Telefono");
+            }
         }
         catch (Exception e)
         {
             latitud = "";
             longitud = "";
+
+            bandera = "No";
+
+            nombre = "";
+            direccion = "";
+            horario = "";
+            telefono = "";
         }
 
         MapFileTileSource tileSource = new MapFileTileSource();
@@ -135,6 +159,41 @@ public class MapaActivity extends Activity
                 double lat = Double.parseDouble(latitud);
                 double lon = Double.parseDouble(longitud);
                 mapView.map().setMapPosition(lat, lon, 12 << 14);
+
+                if (bandera.equals("AtencionClientes"))
+                {
+                    if(provinciaactiva.getNombre().equals("Pinar del Río") || provinciaactiva.getNombre().equals("Cienfuegos") || provinciaactiva.getNombre().equals("Ciego de Ávila") || provinciaactiva.getNombre().equals("Camaguey") || provinciaactiva.getNombre().equals("Las Tunas"))
+                    {
+                    }
+                    else
+                    {
+                        CrearMarcaIndividualAtencionClientes();
+                    }
+
+                }
+
+                if (bandera.equals("EmpresaComercializadora"))
+                {
+                    if (provinciaactiva.getNombre().equals("Ciego de Ávila") || provinciaactiva.getNombre().equals("Camaguey"))
+                    {
+                    }
+                    else
+                    {
+                        CrearMarcaIndividualEmpresaComercializadora();
+                    }
+
+                }
+
+                if (bandera.equals("ServiciosMecanicos"))
+                {
+                    if (provinciaactiva.getNombre().equals("Ciego de Ávila") || provinciaactiva.getNombre().equals("Pinar del Río") || provinciaactiva.getNombre().equals("Las Tunas"))
+                    {}
+                    else
+                    {
+                        CrearMarcaIndividualServiciosMecanicos();
+                    }
+
+                }
             }
             else
             {
@@ -216,6 +275,117 @@ public class MapaActivity extends Activity
             double lon = Double.parseDouble(longitud);
             mapView.map().setMapPosition(lat, lon, 12 << 14);
         }
+    }
+
+    public void CrearMarcaIndividualAtencionClientes()
+{
+    arrayList = new ArrayList<>();
+
+    org.oscim.backend.canvas.Bitmap bitmapPoicc = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.drawable.ic_contact_phone_black_24dp));
+    MarkerSymbol symbolcc = new MarkerSymbol(bitmapPoicc, MarkerSymbol.HotspotPlace.BOTTOM_CENTER);
+
+    double lat = Double.parseDouble(latitud);
+    double lon = Double.parseDouble(longitud);
+    GeoPoint geoPointcc = new GeoPoint(lat, lon);
+    MarkerItem markerItemcc = new MarkerItem("Atencion Clientes", "Atencion Clientes", geoPointcc);
+    arrayList.add(markerItemcc);
+
+    ItemizedLayer<MarkerItem> markerItemItemizedLayercc = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolcc, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+        @Override
+        public boolean onItemSingleTapUp(int index, MarkerItem item)
+        {
+            Bundle bundle = new Bundle();
+            bundle.putString("Nombre", nombre);
+            bundle.putString("Direccion", direccion);
+            bundle.putString("Horario", horario);
+            bundle.putString("Telefono", telefono);
+
+            Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            return false;
+        }
+
+        @Override
+        public boolean onItemLongPress(int index, MarkerItem item) {
+            return false;
+        }
+    });
+    mapView.map().layers().add(markerItemItemizedLayercc);
+}
+
+    public void CrearMarcaIndividualEmpresaComercializadora()
+    {
+        arrayList = new ArrayList<>();
+
+        org.oscim.backend.canvas.Bitmap bitmapPoicc = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.drawable.ic_monetization_on_black_24dp));
+        MarkerSymbol symbolcc = new MarkerSymbol(bitmapPoicc, MarkerSymbol.HotspotPlace.BOTTOM_CENTER);
+
+        double lat = Double.parseDouble(latitud);
+        double lon = Double.parseDouble(longitud);
+        GeoPoint geoPointcc = new GeoPoint(lat, lon);
+        MarkerItem markerItemcc = new MarkerItem("Empresa Comercializadora", "Empresa Comercializadora", geoPointcc);
+        arrayList.add(markerItemcc);
+
+        ItemizedLayer<MarkerItem> markerItemItemizedLayercc = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolcc, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, MarkerItem item)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", nombre);
+                bundle.putString("Direccion", direccion);
+                bundle.putString("Horario", horario);
+                bundle.putString("Telefono", telefono);
+
+                Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, MarkerItem item) {
+                return false;
+            }
+        });
+        mapView.map().layers().add(markerItemItemizedLayercc);
+    }
+
+    public void CrearMarcaIndividualServiciosMecanicos()
+    {
+        arrayList = new ArrayList<>();
+
+        org.oscim.backend.canvas.Bitmap bitmapPoicc = AndroidGraphics.drawableToBitmap(getResources().getDrawable(R.drawable.ic_settings_24dp));
+        MarkerSymbol symbolcc = new MarkerSymbol(bitmapPoicc, MarkerSymbol.HotspotPlace.BOTTOM_CENTER);
+
+        double lat = Double.parseDouble(latitud);
+        double lon = Double.parseDouble(longitud);
+        GeoPoint geoPointcc = new GeoPoint(lat, lon);
+        MarkerItem markerItemcc = new MarkerItem("Servicios Mecanicos", "Servicios Mecanicos", geoPointcc);
+        arrayList.add(markerItemcc);
+
+        ItemizedLayer<MarkerItem> markerItemItemizedLayercc = new ItemizedLayer<MarkerItem>(mapView.map(), arrayList, symbolcc, new ItemizedLayer.OnItemGestureListener<MarkerItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, MarkerItem item)
+            {
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre", nombre);
+                bundle.putString("Direccion", direccion);
+                bundle.putString("Horario", horario);
+                bundle.putString("Telefono", telefono);
+
+                Intent intent = new Intent(getApplicationContext(), DetallesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, MarkerItem item) {
+                return false;
+            }
+        });
+        mapView.map().layers().add(markerItemItemizedLayercc);
     }
 
     public void CrearMarcaCasaComercial()

@@ -274,7 +274,9 @@ public class PortadaActivity extends AppCompatActivity {
                                 Intent intent = new Intent(PortadaActivity.this, PrincipalActivity.class);
                                 startActivity(intent);
                                 finish();
-                            };
+                            }
+
+                            ;
                         }, duracion);
                     }
                     catch (Exception e)
@@ -286,6 +288,7 @@ public class PortadaActivity extends AppCompatActivity {
                     finish();
                 }
             }
+
             return;
         }
     }

@@ -1,8 +1,13 @@
 package cu.tecnomatica.android.glp.activities.servicios;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -52,6 +57,7 @@ public class EmpresaComercializadoraFragment extends Fragment {
     private TextView textohorario;
     private TextView textotelefono;
     private TextView mapatexto;
+    private TextView llamar;
 
     public EmpresaComercializadoraFragment() {
         // Required empty public constructor
@@ -90,11 +96,14 @@ public class EmpresaComercializadoraFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_empresa_comercializadora, container, false);
 
+        PedirPermiso();
+
         textonombre = (TextView)view.findViewById(R.id.id_nombre_empresa);
         textodireccion = (TextView)view.findViewById(R.id.id_direccion_empresa);
         textohorario = (TextView)view.findViewById(R.id.id_horario_empresa);
         textotelefono = (TextView)view.findViewById(R.id.id_telefono_empresa);
         mapatexto = (TextView)view.findViewById(R.id.id_mapa_empresa);
+        llamar = (TextView)view.findViewById(R.id.id_texto_llamar);
 
         String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), dbPath);
@@ -122,6 +131,23 @@ public class EmpresaComercializadoraFragment extends Fragment {
         textohorario.setText(empresacomercializadora.getHorario());
         textotelefono.setText(empresacomercializadora.getTelefono());
 
+        llamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    String[] numeros = empresacomercializadora.getTelefono().split(" ");
+                    String[] llamar = numeros[0].split(",");
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + llamar[0])));
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         mapatexto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -131,6 +157,14 @@ public class EmpresaComercializadoraFragment extends Fragment {
 
                 bundle.putString("Latitud", empresacomercializadora.getLatitud());
                 bundle.putString("Longitud", empresacomercializadora.getLongitud());
+
+                bundle.putString("Bandera", "EmpresaComercializadora");
+
+                bundle.putString("Nombre", empresacomercializadora.getNombre());
+                bundle.putString("Direccion", empresacomercializadora.getDireccion());
+                bundle.putString("Horario", empresacomercializadora.getHorario());
+                bundle.putString("Telefono", empresacomercializadora.getTelefono());
+
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -139,6 +173,15 @@ public class EmpresaComercializadoraFragment extends Fragment {
 
         return view;
     }
+
+    public void PedirPermiso()
+    {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 2);
+        }
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

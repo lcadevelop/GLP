@@ -1,18 +1,20 @@
 package cu.tecnomatica.android.glp.activities.servicios;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import org.greenrobot.greendao.database.Database;
-
 import java.io.File;
 import java.util.List;
 import cu.tecnomatica.android.glp.R;
@@ -51,6 +53,7 @@ public class AtencionClientesFragment extends Fragment {
     private TextView textohorario;
     private TextView textotelefono;
     private TextView mapatexto;
+    private TextView llamar;
 
     public AtencionClientesFragment() {
         // Required empty public constructor
@@ -89,11 +92,14 @@ public class AtencionClientesFragment extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_atencion_clientes, container, false);
 
+        PedirPermiso();
+
         textonombre = (TextView)view.findViewById(R.id.id_nombre_atencion_clientes);
         textodireccion = (TextView)view.findViewById(R.id.id_direccion_atencion_clientes);
         textohorario = (TextView)view.findViewById(R.id.id_horario_atencion_clientes);
         textotelefono = (TextView)view.findViewById(R.id.id_telefono_atencion_clientes);
         mapatexto = (TextView)view.findViewById(R.id.id_mapa__atencion_clientes);
+        llamar = (TextView)view.findViewById(R.id.id_texto_llamar);
 
         String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), dbPath);
@@ -120,6 +126,23 @@ public class AtencionClientesFragment extends Fragment {
         textohorario.setText(atencionclientes.getHorario());
         textotelefono.setText(atencionclientes.getTelefono());
 
+        llamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    String[] numeros = atencionclientes.getTelefono().split(" ");
+                    String[] llamar = numeros[0].split(",");
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + llamar[0])));
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         mapatexto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -129,8 +152,15 @@ public class AtencionClientesFragment extends Fragment {
 
                 bundle.putString("Latitud", atencionclientes.getLatitud());
                 bundle.putString("Longitud", atencionclientes.getLongitud());
-                intent.putExtras(bundle);
 
+                bundle.putString("Bandera", "AtencionClientes");
+
+                bundle.putString("Nombre", atencionclientes.getNombre());
+                bundle.putString("Direccion", atencionclientes.getDireccion());
+                bundle.putString("Horario", atencionclientes.getHorario());
+                bundle.putString("Telefono", atencionclientes.getTelefono());
+
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -140,6 +170,13 @@ public class AtencionClientesFragment extends Fragment {
         //return inflater.inflate(R.layout.fragment_atencion_clientes, container, false);
     }
 
+    public void PedirPermiso()
+    {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 2);
+        }
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

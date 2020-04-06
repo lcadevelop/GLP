@@ -118,7 +118,7 @@
             app:layout_constraintStart_toEndOf="@+id/id_telefono_icon"
             app:layout_constraintTop_toBottomOf="@+id/id_separator_2" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/id_texto_llamar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_separator_2" />
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_2" />-->
 
         <TextView
             android:id="@+id/id_telefono_texto_pt"
@@ -141,7 +141,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/id_telefono_icon" />
 
-        <View
+        <!--<View
             android:id="@+id/id_separator_3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -149,18 +149,18 @@
             android:background="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_telefono_texto_pt" />
+            app:layout_constraintTop_toBottomOf="@+id/id_telefono_texto_pt" />-->
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/id_mapa_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:src="@drawable/ic_location_on_black_24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/id_separator_3" />
+            app:layout_constraintTop_toBottomOf="@id/id_separator_3" />-->
 
-        <TextView
+        <!--<TextView
             android:id="@+id/id_mapa_texto_pv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/id_mapa_icon"
-            app:layout_constraintTop_toBottomOf="@+id/id_separator_3" />
+            app:layout_constraintTop_toBottomOf="@+id/id_separator_3" />-->
 
         <View
             android:id="@+id/id_separator_4"
@@ -182,7 +182,7 @@
             android:background="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_mapa_texto_pv" />
+            app:layout_constraintTop_toBottomOf="@+id/id_telefono_texto_pt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

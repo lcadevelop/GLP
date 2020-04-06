@@ -1,7 +1,13 @@
 package cu.tecnomatica.android.glp.activities.servicios;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -38,6 +44,7 @@ public class CasaComercialFragment extends Fragment
     private TextView telefono;
     private TextView textmapa;
     private ImageView imagen;
+    private TextView llamar;
 
     String municipioSeleccionado;
 
@@ -66,6 +73,8 @@ public class CasaComercialFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_casa_comercial, container, false);
+
+        PedirPermiso();
 
         String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), dbPath);
@@ -116,6 +125,7 @@ public class CasaComercialFragment extends Fragment
         horario = (TextView)view.findViewById(R.id.id_horario_texto);
         telefono = (TextView)view.findViewById(R.id.id_telefono_texto);
         textmapa = (TextView)view.findViewById(R.id.id_mapa_texto);
+        llamar = (TextView)view.findViewById(R.id.id_texto_llamar);
 
         combo_municipios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -136,13 +146,31 @@ public class CasaComercialFragment extends Fragment
                 objmunicipio.setActivo(true);
                 daoSession.insertOrReplace(objmunicipio);
 
-                List<Casacomercial> casacomercials = daoSession.getCasacomercialDao().queryBuilder().where(CasacomercialDao.Properties.Idmunicipio.like(objmunicipio.getIdmunicipio().toString())).list();
+                final List<Casacomercial> casacomercials = daoSession.getCasacomercialDao().queryBuilder().where(CasacomercialDao.Properties.Idmunicipio.like(objmunicipio.getIdmunicipio().toString())).list();
                 casaComercialHelps = new CasaComercialHelp(casacomercials.get(0).getHorario(), casacomercials.get(0).getDireccion(), casacomercials.get(0).getTelefono(), casacomercials.get(0).getLatitud(), casacomercials.get(0).getLongitud());
 
 
                 direccion.setText(casaComercialHelps.getDireccion());
                 horario.setText(casaComercialHelps.getHorario());
                 telefono.setText(casaComercialHelps.getTelefono());
+
+                llamar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        try
+                        {
+                            String[] numeros = casaComercialHelps.getTelefono().split(" ");
+                            String[] llamar = numeros[0].split(",");
+                            startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + llamar[0])));
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
                 textmapa.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v)
@@ -152,6 +180,14 @@ public class CasaComercialFragment extends Fragment
 
                         bundle.putString("Latitud", casaComercialHelps.getLatitud());
                         bundle.putString("Longitud", casaComercialHelps.getLongitud());
+
+                        bundle.putString("Bandera", "CasaComercial");
+
+                        bundle.putString("Nombre", casacomercials.get(0).getNombre());
+                        bundle.putString("Direccion", casaComercialHelps.getDireccion());
+                        bundle.putString("Horario", casaComercialHelps.getHorario());
+                        bundle.putString("Telefono", casaComercialHelps.getTelefono());
+
                         intent.putExtras(bundle);
 
                         startActivity(intent);
@@ -165,6 +201,14 @@ public class CasaComercialFragment extends Fragment
             }
         });
         return view;
+    }
+
+    public void PedirPermiso()
+    {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 2);
+        }
     }
 
     public String getMunicipioSeleccionado() {

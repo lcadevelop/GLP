@@ -1,8 +1,13 @@
 package cu.tecnomatica.android.glp.activities.servicios;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -50,6 +55,7 @@ public class ServiciosMecanicosFragment extends Fragment {
     private TextView textohorario;
     private TextView textotelefono;
     private TextView mapatexto;
+    private TextView llamar;
 
     public ServiciosMecanicosFragment() {
         // Required empty public constructor
@@ -88,11 +94,14 @@ public class ServiciosMecanicosFragment extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_servicios_mecanicos, container, false);
 
+        PedirPermiso();
+
         textonombre = (TextView)view.findViewById(R.id.id_nombre_servicios_mecanicos);
         textodireccion = (TextView)view.findViewById(R.id.id_direccion_servicios_mecanicos);
         textohorario = (TextView)view.findViewById(R.id.id_horario_servicios_mecanicos);
         textotelefono = (TextView)view.findViewById(R.id.id_telefono_servicios_mecanicos);
         mapatexto = (TextView)view.findViewById(R.id.id_mapa_servicios_mecanicos);
+        llamar = (TextView)view.findViewById(R.id.id_texto_llamar);
 
         String dbPath = new File(Environment.getExternalStorageDirectory().getPath() + DB_FILE).getAbsolutePath();
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(getActivity(), dbPath);
@@ -119,6 +128,23 @@ public class ServiciosMecanicosFragment extends Fragment {
         textohorario.setText(serviciosmecanicos.getHorario());
         textotelefono.setText(serviciosmecanicos.getTelefono());
 
+        llamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    String[] numeros = serviciosmecanicos.getTelefono().split(" ");
+                    String[] llamar = numeros[0].split(",");
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + llamar[0])));
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         mapatexto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -128,6 +154,13 @@ public class ServiciosMecanicosFragment extends Fragment {
 
                 bundle.putString("Latitud", serviciosmecanicos.getLatitud());
                 bundle.putString("Longitud", serviciosmecanicos.getLongitud());
+
+                bundle.putString("Bandera", "ServiciosMecanicos");
+
+                bundle.putString("Nombre", serviciosmecanicos.getNombre());
+                bundle.putString("Direccion", serviciosmecanicos.getDireccion());
+                bundle.putString("Horario", serviciosmecanicos.getHorario());
+                bundle.putString("Telefono", serviciosmecanicos.getTelefono());
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -135,6 +168,14 @@ public class ServiciosMecanicosFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void PedirPermiso()
+    {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 2);
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
